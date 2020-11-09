@@ -1,40 +1,33 @@
 import React, { useState } from 'react';
-import { checkCredentials } from '../../../api/users';
+import { connect } from 'react-redux';
 
-function Login() {
-  const [form, setForm] = useState([{
-    login: '',
-    password: '',
-  }]);
+import { tryLoginThunk } from '../../../redux/authReducer';
 
-  const login = () => {
-    checkCredentials
-      .then(users => {
-        users.forEach(user => {
-            console.log(user)
-        });
-      });
-  }  
+
+function Login(props) {
+  const [login, setLogin] = useState();
+  const [password, setPassword] = useState();
 
   return (
     <div className="login-form">
       <input 
         type="text" 
-        onChange={ e => setForm({ ...form, login: e.target.value }) } 
-        value={ form.login || '' }
+        onChange={ e => setLogin(e.target.value) } 
+        value={ login || '' }
         placeholder="login"
       />
       <br />
       <input 
         type="password" 
-        onChange={ e => setForm({ ...form, password: e.target.value }) } 
-        value={ form.password || '' }
+        onChange={ e => setPassword(e.target.value) } 
+        value={ password || '' }
         placeholder="password"
       />
       <br/>
-      <button onClick={ login }>login</button>
+      <button onClick={ () => props.tryLoginThunk(login, password) }>login</button>
     </div>
   );
 }
 
-export default Login;
+
+export default connect(null, { tryLoginThunk })(Login);

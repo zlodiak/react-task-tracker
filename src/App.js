@@ -7,6 +7,7 @@ import Page1 from './components/page1/Page1';
 import Page2 from './components/page2/Page2';
 import Page3 from './components/page3/Page3';
 import Auth from './components/auth/auth/Auth';
+import { setLoggedAC } from './redux/authReducer';
 
 function App(props) {
   function renderUserArea() {
@@ -22,7 +23,10 @@ function App(props) {
         <div className="content">
           <div className="content-inner">
             <header className="header">
-              <div>header</div>
+              <div className="header-inner">
+                <div className="login-label">You logged as: { props.isLogged }</div>
+                <button onClick={ () => props.setLoggedAC(false) }>Logout</button>
+              </div>
             </header>
 
             <main className="main">
@@ -61,4 +65,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, { setLoggedAC })(App);

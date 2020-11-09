@@ -1,3 +1,5 @@
+import { getUsers } from '../api/users';
+
 const authReducerInit = {
     isLogged: false,
     displayMode: 'login',
@@ -31,6 +33,17 @@ export const setLoggedAC = value => {
 
 export const setDisplayModeAC = value => {
     return { type: 'SET_DISPLAY_MODE', payload: value }
+}
+
+export const tryLoginThunk = (login, password) => {
+    return async dispatch => {
+        const result = await getUsers || [];
+        result.forEach(user => {
+            if(user.login === login && user.password === password) {
+                dispatch(setLoggedAC(login));
+            }
+        });
+    }
 }
 
 
