@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+import Page1 from './components/page1/Page1';
+import Page2 from './components/page2/Page2';
+
+function App(props) {
+  console.log('pageAPP render', props)
+
+  const [count, setCount] = useState(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <br/>
+      <button onClick={ () => setCount(count + 1) }>click count: { count }</button>
+      <br/>
+      <br/>
+      <Page1/>
+      <br/>
+      <Page2/>
     </div>
   );
 }
