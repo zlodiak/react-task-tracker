@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addClickCreator } from '../../redux/mainReducer';
 
-function Page2(props) {
-    console.log('page2 render', props)
+function Page2() {
     return (
         <>
             page2
@@ -11,10 +9,4 @@ function Page2(props) {
     );
 }
 
-const mapStateToProps = state => {
-    return {
-      clicks: state.mainReducer.clicks,
-    }
-}
-
-export default connect(mapStateToProps, {addClickCreator})(Page2);
+export default connect(null, {})(Page2);

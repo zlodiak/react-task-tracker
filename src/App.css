@@ -1,55 +1,69 @@
-.wrap {
+.wrap-outer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-    .aside {
-        background: yellow;
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-    }
-
-        .nav-link {
-            margin-bottom: 10px;
-        }
-
-        .nav-link.active {
-            font-weight: bold;
-        }        
-
-    .content {
+    .auth-modal {
+        width: 400px;
+        height: 200px;
         background: cyan;
-        flex-grow: 1;
-        min-height: 100vh;
     }
 
-        .content-inner {
+    .wrap {
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
+
+        .aside {
+            background: yellow;
+            padding: 10px;
             display: flex;
             flex-direction: column;
         }
 
-            .header {
-                background: lime;
-                padding: 10px;
+            .nav-link {
+                margin-bottom: 10px;
             }
 
-                .header > * {
-                    height: 20px;
-                    overflow: hidden;
-                }            
+            .nav-link.active {
+                font-weight: bold;
+            }        
 
-            .main {
-                padding: 10px;
-                height: calc(100vh - 100px);
+        .content {
+            background: cyan;
+            flex-grow: 1;
+            min-height: 100vh;
+        }
+
+            .content-inner {
+                display: flex;
+                flex-direction: column;
             }
 
-            .footer {
-                background: navy;
-                padding: 10px;
-            }
-
-                .footer > * {
-                    height: 20px;
-                    overflow: hidden;
+                .header {
+                    background: lime;
+                    padding: 10px;
                 }
+
+                    .header > * {
+                        height: 20px;
+                        overflow: hidden;
+                    }            
+
+                .main {
+                    padding: 10px;
+                    height: calc(100vh - 100px);
+                }
+
+                .footer {
+                    background: navy;
+                    padding: 10px;
+                }
+
+                    .footer > * {
+                        height: 20px;
+                        overflow: hidden;
+                    }

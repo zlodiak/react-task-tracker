@@ -6,11 +6,11 @@ import './App.css';
 import Page1 from './components/page1/Page1';
 import Page2 from './components/page2/Page2';
 import Page3 from './components/page3/Page3';
-import Auth from './components/Auth/Auth';
+import Auth from './components/auth/auth/Auth';
 
-function App() {
-  return (
-    <BrowserRouter>
+function App(props) {
+  function renderUserArea() {
+    return (
       <div className="wrap">
         <aside className="aside">
           <NavLink to="/page1" className="nav-link">page1</NavLink>
@@ -40,9 +40,25 @@ function App() {
             </footer>            
           </div>
         </div>        
+      </div>      
+    );
+  }
+
+  return (
+    <BrowserRouter>
+      <div className="wrap-outer">
+
+        { props.isLogged && renderUserArea() }
+        { !props.isLogged && <Auth className="auth-modal"/> }
       </div>
     </BrowserRouter>
   );
 }
 
-export default connect(null, null)(App);
+const mapStateToProps = state => {
+  return {
+    isLogged: state.authReducer.isLogged,
+  }
+}
+
+export default connect(mapStateToProps, null)(App);
