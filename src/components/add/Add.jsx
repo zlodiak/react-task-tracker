@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-function Page2() {
+function Add() {
     return (
         <>
-            page2
+            Add
         </>
     );
 }
 
-export default connect(null, {})(Page2);
+export default connect(null, {})(Add);

@@ -3,21 +3,20 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 
 import './App.css';
-import Page1 from './components/page1/Page1';
-import Page2 from './components/page2/Page2';
-import Page3 from './components/page3/Page3';
+import Tasks from './components/tasks/Tasks';
+import Add from './components/add/Add';
+import Profile from './components/profile/Profile';
 import Auth from './components/auth/auth/Auth';
-import { setLoggedAC } from './redux/authReducer';
+import { setLoggedAC } from './redux/actions';
 
 function App(props) {
   function renderUserArea() {
     return (
       <div className="wrap">
         <aside className="aside">
-          <NavLink to="/page1" className="nav-link">page1</NavLink>
-          <NavLink to="/page2" className="nav-link">page2</NavLink>
-          <NavLink to="/page3" className="nav-link">page3</NavLink>
-          <NavLink to="/auth" className="nav-link">auth</NavLink>
+          <NavLink to="/Tasks" className="nav-link">Tasks</NavLink>
+          <NavLink to="/Add" className="nav-link">Add</NavLink>
+          <NavLink to="/Profile" className="nav-link">Profile</NavLink>
         </aside>
 
         <div className="content">
@@ -31,11 +30,10 @@ function App(props) {
 
             <main className="main">
               <Switch>
-                <Route exact path='/' render={ () => <Page1/> }/>
-                <Route exact path='/page1' render={ () => <Page1/> }/>
-                <Route exact path='/page2' render={ () => <Page2/> }/>
-                <Route exact path='/page3' render={ () => <Page3/> }/>
-                <Route exact path='/auth' render={ () => <Auth/> }/>
+                <Route exact path='/' render={ () => <Tasks/> }/>
+                <Route exact path='/Tasks' render={ () => <Tasks/> }/>
+                <Route exact path='/Add' render={ () => <Add/> }/>
+                <Route exact path='/Profile' render={ () => <Profile/> }/>
               </Switch>
             </main>
 

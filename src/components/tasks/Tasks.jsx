@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
 
-function Page1(props) {
+function Tasks(props) {
     return (
         <>
-            page1
+            Tasks
         </>
     );
 }
 
-export default memo(Page1);
+export default memo(Tasks);

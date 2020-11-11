@@ -2,11 +2,18 @@
   "users": [
     {
       "login": "1",
-      "password": "1"
+      "password": "1",
+      "gender": 0
     },
     {
       "login": "2",
-      "password": "2"
+      "password": "2",
+      "gender": 1
     }    
+  ],
+  "genders": [
+    "female",
+    "male",
+    "unknown"
   ]
 }
