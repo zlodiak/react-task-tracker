@@ -37,23 +37,15 @@ export const tryLoginThunk = (login, password) => {
 
 export const setGenderThunk = (gender, login) => {
     return async dispatch => {
-        const users = await getUsers || [];
-        users.forEach(user => {
-            if(user.login === login) {
-                const user_ = { ...user, gender: gender };
-                ;(async () => {
-                    const result = await setUserF(user_, user.id);
-                    debugger
-                    if(result.ok) {
-                        dispatch(setGenderAC(user_.gender));
-                    }
-                })();
-                
-            }
-        });
+      const users = await getUsers || [];
+      for(let user of users) {
+        if(user.login === login) {
+          const user_ = { ...user, gender: gender };
+          const result = await setUser(user_, user.id);
+          if(result.ok) {
+            dispatch(setGenderAC(user_.gender));
+          }
+        }
+      };
     }
-}
-
-async function setUserF(user, id) {
-    return await setUser(user, id);
-}
+  }
