@@ -1,6 +1,6 @@
 import { getGenders } from '../api/users';
 
-const optionReducer = function optionReducer(state = [], action) {
+const optionsReducer = function optionsReducer(state = [], action) {
     switch(action.type) {
         case 'FILL_GENDERS': {
             state = {
@@ -17,4 +17,4 @@ const optionReducer = function optionReducer(state = [], action) {
 
 
 
-export default optionReducer;
+export default optionsReducer;

@@ -1,4 +1,4 @@
-import { getUsers, fillGenders } from '../api/users';
+import { getUsers, fillGenders, setGender, setUser } from '../api/users';
 
 export const setLoggedAC = value => {
     return { type: 'SET_LOGGED', payload: value }
@@ -29,18 +29,31 @@ export const tryLoginThunk = (login, password) => {
         users.forEach(user => {
             if(user.login === login && user.password === password) {
                 dispatch(setLoggedAC(login));
+                dispatch(setGenderAC(user.gender));
             }
         });
     }
 }
 
-// export const setGenderThunk = (login) => {
-//     return async dispatch => {
-//         const users = await getGender;
-//         users.forEach(user => {
-//             if(user.login === login) {
-//                 dispatch(setGenderAC(user.gender));
-//             }
-//         });
-//     }
-// }
+export const setGenderThunk = (gender, login) => {
+    return async dispatch => {
+        const users = await getUsers || [];
+        users.forEach(user => {
+            if(user.login === login) {
+                const user_ = { ...user, gender: gender };
+                ;(async () => {
+                    const result = await setUserF(user_, user.id);
+                    debugger
+                    if(result.ok) {
+                        dispatch(setGenderAC(user_.gender));
+                    }
+                })();
+                
+            }
+        });
+    }
+}
+
+async function setUserF(user, id) {
+    return await setUser(user, id);
+}

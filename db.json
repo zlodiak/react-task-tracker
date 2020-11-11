@@ -1,15 +1,17 @@
 {
   "users": [
     {
+      "id": 0,
       "login": "1",
       "password": "1",
-      "gender": 0
+      "gender": "2"
     },
     {
+      "id": 1,
       "login": "2",
       "password": "2",
-      "gender": 1
-    }    
+      "gender": "0"
+    }
   ],
   "genders": [
     "female",
