@@ -13,6 +13,7 @@ function Add(props) {
   });
 
   const [taskStatusses, setTaskStatusses] = useState();
+  const [usersLogins, setUsersLogins] = useState([]);
 
   useEffect(() => {
     setTask({ ...task, userId: props.userId });
@@ -21,6 +22,8 @@ function Add(props) {
 
   useEffect(() => {
     setTaskStatusses(props.taskStatusses);
+    setUsersLogins(props.usersLogins);
+    props.usersLogins.length && setTask({ ...task, executorId: 0 });
   }, [props]);
 
   function renderTaskStatussesOptions() {
@@ -39,16 +42,31 @@ function Add(props) {
     );
   }  
 
+  function renderUsersLoginsOptions() {
+    return (
+      props.usersLogins.map((login, i) => {
+        return <option value={ i } key={ i }>{ props.usersLogins[i] }</option>
+      })
+    );
+  }
+
+  function renderUsersLoginsSelect() {
+    return (
+      <select value={ task.executorId } onChange={ e => setTask({ ...task, executorId: e.target.value }) }>
+        { renderUsersLoginsOptions() }
+      </select>
+    );
+  }  
+
   function submit() {
-    console.log(task, typeof task)
     if(task.title.trim() && task.text.trim()) {
-      console.log('ok')
       props.addTaskThunk(task, () => setTask({ ...task, title: '', text: '', status: 0 }));
     }
   }
 
   return (
     <>
+      { task.executorId }
       <div className="add-task-form">
         <input 
           type="text" 
@@ -63,7 +81,9 @@ function Add(props) {
           placeholder="text"
         />
         <br/>
-          { props.taskStatusses && renderTaskStatussesSelect() }
+          status: { props.taskStatusses && renderTaskStatussesSelect() }
+        <br/>
+          executor: { props.usersLogins && renderUsersLoginsSelect() }
         <br/>
         <button onClick={ submit }>login</button>
       </div>
@@ -75,6 +95,7 @@ const mapStateToProps = state => {
   return {
       userId: state.authReducer.idLogged,
       taskStatusses: state.tasksReducer.taskStatusses,
+      usersLogins: state.optionsReducer.usersLogins || [],
   }
 }
 

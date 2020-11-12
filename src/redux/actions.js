@@ -17,6 +17,10 @@ export const fillGendersAC = value => {
     return { type: 'FILL_GENDERS', payload: value }
 }
 
+export const fillUsersAC = value => {
+    return { type: 'FILL_USERS', payload: value }
+}
+
 export const addTaskAC = task => {
     return { type: 'ADD_TASK', payload: task }
 }
@@ -37,7 +41,6 @@ export const addTaskThunk = (task, clearFieldCB) => {
         });
         const todoWithId = await result.json();
         if(todoWithId) {
-            // dispatch(addTaskAC(todoWithId));
             clearFieldCB();
         }
     }
@@ -54,6 +57,19 @@ export const fillGendersThunk = () => {
     return async dispatch => {
         const genders = await fillGenders || [];
         dispatch(fillGendersAC(genders));
+    }
+}
+
+export const fillUsersThunk = () => {
+    return async dispatch => {
+        const users = await getUsers || [];
+        if(users.length) {
+            const usersArray = [];
+            users.forEach(user => {
+                usersArray[user.id] = user.login;
+            });
+            dispatch(fillUsersAC(usersArray));
+        }
     }
 }
 

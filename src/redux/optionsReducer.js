@@ -1,6 +1,6 @@
 import { getGenders } from '../api/users';
 
-const optionsReducer = function optionsReducer(state = [], action) {
+const optionsReducer = function optionsReducer(state = { usersLogins: [] }, action) {
     switch(action.type) {
         case 'FILL_GENDERS': {
             state = {
@@ -8,7 +8,14 @@ const optionsReducer = function optionsReducer(state = [], action) {
                 genders: action.payload,
             };
             break;
-        }              
+        }    
+        case 'FILL_USERS': {
+            state = {
+                ...state,
+                usersLogins: action.payload,
+            };
+            break;
+        }           
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { tryLoginThunk, fillGendersThunk } from '../../../redux/actions';
+import { tryLoginThunk, fillGendersThunk, fillUsersThunk } from '../../../redux/actions';
 
 
 function Login(props) {
@@ -24,10 +24,10 @@ function Login(props) {
         placeholder="password"
       />
       <br/>
-      <button onClick={ () => { props.tryLoginThunk(login, password); props.fillGendersThunk() } }>login</button>
+      <button onClick={ () => { props.tryLoginThunk(login, password); props.fillGendersThunk(); props.fillUsersThunk() } }>login</button>
     </div>
   );
 }
 
 
-export default connect(null, { tryLoginThunk, fillGendersThunk })(Login);
+export default connect(null, { tryLoginThunk, fillGendersThunk, fillUsersThunk })(Login);
