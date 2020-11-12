@@ -37,7 +37,7 @@ export const addTaskThunk = (task, clearFieldCB) => {
         });
         const todoWithId = await result.json();
         if(todoWithId) {
-            dispatch(addTaskAC(todoWithId));
+            // dispatch(addTaskAC(todoWithId));
             clearFieldCB();
         }
     }

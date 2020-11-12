@@ -1,6 +1,12 @@
 import { getTasks } from '../api/tasks';
 
-const tasksReducer = function tasksReducer(state = [], action) {
+const stateInit = {
+    taskStatusses: [],
+    tasks: [],
+};
+
+const tasksReducer = function tasksReducer(state = stateInit, action) {
+    console.log(state)
     switch(action.type) {
         case 'ADD_TASK': {
             state = {
