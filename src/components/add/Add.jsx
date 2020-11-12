@@ -59,14 +59,14 @@ function Add(props) {
   }  
 
   function submit() {
+    console.log(task.title.trim(), task.text.trim());
     if(task.title.trim() && task.text.trim()) {
-      props.addTaskThunk(task, () => setTask({ ...task, title: '', text: '', status: 0 }));
+      props.addTaskThunk(task, () => setTask({ ...task, title: '', text: '', status: 0, executorId: 0 }));
     }
   }
 
   return (
     <>
-      { task.executorId }
       <div className="add-task-form">
         <input 
           type="text" 
