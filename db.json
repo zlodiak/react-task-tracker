@@ -17,5 +17,19 @@
     "female",
     "male",
     "unknown"
+  ],
+  "taskStatusses": [
+    "not completed",
+    "completed"
+  ],
+  "tasks": [
+    {
+      "id": 0,
+      "userId": 0,
+      "executorId": 1,
+      "title": "title1",
+      "text": "eq eqwe e rwt erytry ddfgdh turu dfgd",
+      "status": 0
+    }
   ]
 }

@@ -1,4 +1,5 @@
-import { getUsers, fillGenders, setGender, setUser } from '../api/users';
+import { getUsers, fillGenders, setUser } from '../api/users';
+import { addTask } from '../api/tasks';
 
 export const setLoggedAC = value => {
     return { type: 'SET_LOGGED', payload: value }
@@ -14,6 +15,28 @@ export const setGenderAC = value => {
 
 export const fillGendersAC = value => {
     return { type: 'FILL_GENDERS', payload: value }
+}
+
+export const addTaskAC = task => {
+    return { type: 'ADD_TASK', payload: task }
+}
+
+
+export const addTaskThunk = (task, clearFieldCB) => {
+    return async dispatch => {
+        const result = await addTask({
+            title: task.title,
+            text: task.text,
+            status: task.status,
+            executorId: task.executorId,
+            userId: task.userId,
+        });
+        const todoWithId = await result.json();
+        if(todoWithId) {
+            dispatch(addTaskAC(todoWithId));
+            clearFieldCB();
+        }
+    }
 }
 
 export const fillGendersThunk = () => {
