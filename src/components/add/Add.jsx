@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { addTaskThunk } from '../../redux/actions';
+import { addTaskThunk, fillTaskStatussesThunk } from '../../redux/actions';
 
 function Add(props) {
   const [task, setTask] = useState([{
@@ -11,6 +11,17 @@ function Add(props) {
     executorId: null,
     userId: null,
   }]);
+
+  const [taskStatusses, setTaskStatusses] = useState();
+
+  useEffect(() => {
+    setTask({ ...task, userId: props.userId });
+    props.fillTaskStatussesThunk();
+  }, []);
+
+  useEffect(() => {
+    setTaskStatusses(props.taskStatusses);
+  }, [props]);
 
   return (
     <>
@@ -28,10 +39,20 @@ function Add(props) {
           placeholder="text"
         />
         <br/>
+          {/* { props.taskS } */}
+          { taskStatusses ? taskStatusses : 111 }
+        <br/>
         <button onClick={ () => { props.addTaskThunk(task) } }>login</button>
       </div>
     </>
   );
 }
 
-export default connect(null, { addTaskThunk })(Add);
+const mapStateToProps = state => {
+  return {
+      userId: state.authReducer.idLogged,
+      taskStatusses: state.tasksReducer.taskStatusses,
+  }
+}
+
+export default connect(mapStateToProps, { addTaskThunk, fillTaskStatussesThunk })(Add);

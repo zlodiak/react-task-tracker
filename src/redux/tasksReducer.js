@@ -1,6 +1,6 @@
 import { getTasks } from '../api/tasks';
 
-const tasksReducer = function optionsReducer(state = [], action) {
+const tasksReducer = function tasksReducer(state = [], action) {
     switch(action.type) {
         case 'ADD_TASK': {
             state = {
@@ -8,7 +8,14 @@ const tasksReducer = function optionsReducer(state = [], action) {
                 tasks: [ ...state.tasks, action.payload ],
             };
             break;
-        }              
+        }  
+        case 'FILL_TASK_STATUSSES': {
+            state = {
+                ...state,
+                taskStatusses: action.payload,
+            };
+            break;
+        }             
         default:
             return state;
     }

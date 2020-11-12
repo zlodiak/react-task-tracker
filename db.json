@@ -10,7 +10,7 @@
       "id": 1,
       "login": "2",
       "password": "2",
-      "gender": "0"
+      "gender": "2"
     }
   ],
   "genders": [
@@ -18,7 +18,7 @@
     "male",
     "unknown"
   ],
-  "taskStatusses": [
+  "task-statusses": [
     "not completed",
     "completed"
   ],

@@ -8,7 +8,6 @@ function Profile(props) {
     console.log('Profile render', props)
 
     function setGender(e) {
-        console.log(e.target.value)
         props.setGenderThunk(e.target.value, props.login);
     }
 
@@ -41,6 +40,6 @@ const mapStateToProps = state => {
         gender: state.authReducer.gender,
         genders: state.optionsReducer.genders,
     }
-  }
+}
   
 export default connect(mapStateToProps, { setGenderThunk })(Profile);

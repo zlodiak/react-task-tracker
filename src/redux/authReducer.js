@@ -8,7 +8,8 @@ const authReducer = function authReducer(state = authReducerInit, action) {
         case 'SET_LOGGED': {
             state = {
                 ...state,
-                isLogged: action.payload,
+                isLogged: action.payload.login,
+                idLogged: action.payload.id
             };
             break;
         }

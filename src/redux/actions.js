@@ -1,8 +1,8 @@
 import { getUsers, fillGenders, setUser } from '../api/users';
-import { addTask } from '../api/tasks';
+import { addTask, fillTaskStatusses } from '../api/tasks';
 
-export const setLoggedAC = value => {
-    return { type: 'SET_LOGGED', payload: value }
+export const setLoggedAC = (login ,id) => {
+    return { type: 'SET_LOGGED', payload: { login, id } }
 }
 
 export const setDisplayModeAC = value => {
@@ -19,6 +19,10 @@ export const fillGendersAC = value => {
 
 export const addTaskAC = task => {
     return { type: 'ADD_TASK', payload: task }
+}
+
+export const fillTaskStatussesAC = value => {
+    return { type: 'FILL_TASK_STATUSSES', payload: value }
 }
 
 
@@ -39,6 +43,13 @@ export const addTaskThunk = (task, clearFieldCB) => {
     }
 }
 
+export const fillTaskStatussesThunk = () => {
+    return async dispatch => {
+        const taskStatusses = await fillTaskStatusses || [];
+        dispatch(fillTaskStatussesAC(taskStatusses));
+    }
+}
+
 export const fillGendersThunk = () => {
     return async dispatch => {
         const genders = await fillGenders || [];
@@ -51,7 +62,7 @@ export const tryLoginThunk = (login, password) => {
         const users = await getUsers || [];
         users.forEach(user => {
             if(user.login === login && user.password === password) {
-                dispatch(setLoggedAC(login));
+                dispatch(setLoggedAC(login, user.id));
                 dispatch(setGenderAC(user.gender));
             }
         });
