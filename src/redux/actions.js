@@ -1,5 +1,5 @@
 import { getUsers, fillGenders, setUser } from '../api/users';
-import { addTask, fillTaskStatusses } from '../api/tasks';
+import { addTask, fillTaskStatusses, getTasks } from '../api/tasks';
 
 export const setLoggedAC = (login ,id) => {
     return { type: 'SET_LOGGED', payload: { login, id } }
@@ -29,6 +29,15 @@ export const fillTaskStatussesAC = value => {
     return { type: 'FILL_TASK_STATUSSES', payload: value }
 }
 
+
+export const fillTasksThunk = () => {
+    return async dispatch => {
+        const tasks = await getTasks;
+        for(let task of tasks) {
+            dispatch(addTaskAC(task));
+        };
+    }
+}
 
 export const addTaskThunk = (task, clearFieldCB) => {
     return async dispatch => {

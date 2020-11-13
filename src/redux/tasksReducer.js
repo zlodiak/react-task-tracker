@@ -6,7 +6,6 @@ const stateInit = {
 };
 
 const tasksReducer = function tasksReducer(state = stateInit, action) {
-    console.log(state)
     switch(action.type) {
         case 'ADD_TASK': {
             state = {
