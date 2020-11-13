@@ -36,46 +36,6 @@
       "title": "title1",
       "text": "eq eqwe e rwt erytry ddfgdh turu dfgd",
       "status": 1
-    },
-    {
-      "title": "asd",
-      "text": "ddd",
-      "status": 0,
-      "executorId": 0,
-      "userId": null,
-      "id": 1
-    },
-    {
-      "title": "11",
-      "text": "222",
-      "status": 0,
-      "executorId": 0,
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "title": "11",
-      "text": "222",
-      "status": 0,
-      "executorId": "2",
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "title": "2323",
-      "text": "5454",
-      "status": 0,
-      "executorId": "2",
-      "userId": 1,
-      "id": 4
-    },
-    {
-      "title": "er",
-      "text": "werwer",
-      "status": "1",
-      "executorId": "2",
-      "userId": 1,
-      "id": 5
     }
   ]
 }

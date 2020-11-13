@@ -41,15 +41,10 @@ export const fillTasksThunk = () => {
 
 export const addTaskThunk = (task, clearFieldCB) => {
     return async dispatch => {
-        const result = await addTask({
-            title: task.title,
-            text: task.text,
-            status: task.status,
-            executorId: task.executorId,
-            userId: task.userId,
-        });
+        const result = await addTask(task);
         const todoWithId = await result.json();
         if(todoWithId) {
+            dispatch(addTaskAC(todoWithId));
             clearFieldCB();
         }
     }

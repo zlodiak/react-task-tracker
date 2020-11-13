@@ -12,17 +12,12 @@ function Add(props) {
     userId: null,
   });
 
-  const [taskStatusses, setTaskStatusses] = useState();
-  const [usersLogins, setUsersLogins] = useState([]);
-
   useEffect(() => {
     setTask({ ...task, userId: props.userId });
     props.fillTaskStatussesThunk();
   }, []);
 
   useEffect(() => {
-    setTaskStatusses(props.taskStatusses);
-    setUsersLogins(props.usersLogins);
     props.usersLogins.length && setTask({ ...task, executorId: 0 });
   }, [props]);
 
@@ -36,7 +31,7 @@ function Add(props) {
 
   function renderTaskStatussesSelect() {
     return (
-      <select value={ task.status } onChange={ e => setTask({ ...task, status: e.target.value }) }>
+      <select value={ task.status || '' } onChange={ e => setTask({ ...task, status: e.target.value }) }>
         { renderTaskStatussesOptions() }
       </select>
     );
@@ -52,7 +47,7 @@ function Add(props) {
 
   function renderUsersLoginsSelect() {
     return (
-      <select value={ task.executorId } onChange={ e => setTask({ ...task, executorId: e.target.value }) }>
+      <select value={ task.executorId || '' } onChange={ e => setTask({ ...task, executorId: e.target.value }) }>
         { renderUsersLoginsOptions() }
       </select>
     );

@@ -1,5 +1,3 @@
-import { getGenders } from '../api/users';
-
 const optionsReducer = function optionsReducer(state = { usersLogins: [] }, action) {
     switch(action.type) {
         case 'FILL_GENDERS': {

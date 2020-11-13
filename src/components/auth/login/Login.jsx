@@ -8,6 +8,13 @@ function Login(props) {
   const [login, setLogin] = useState();
   const [password, setPassword] = useState();
 
+  function init() {
+    props.tryLoginThunk(login, password); 
+    props.fillGendersThunk(); 
+    props.fillUsersThunk(); 
+    props.fillTasksThunk()
+  }
+
   return (
     <div className="login-form">
       <input 
@@ -24,7 +31,7 @@ function Login(props) {
         placeholder="password"
       />
       <br/>
-      <button onClick={ () => { props.tryLoginThunk(login, password); props.fillGendersThunk(); props.fillUsersThunk(); props.fillTasksThunk() } }>login</button>
+      <button onClick={ init }>login</button>
     </div>
   );
 }

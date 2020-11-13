@@ -1,5 +1,3 @@
-import { getTasks } from '../api/tasks';
-
 const stateInit = {
     taskStatusses: [],
     tasks: [],
