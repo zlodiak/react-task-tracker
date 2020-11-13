@@ -12,6 +12,13 @@ const tasksReducer = function tasksReducer(state = stateInit, action) {
             };
             break;
         }  
+        case 'CLEAR_TASKS': {
+            state = {
+                ...state,
+                tasks: [],
+            };
+            break;
+        } 
         case 'FILL_TASK_STATUSSES': {
             state = {
                 ...state,

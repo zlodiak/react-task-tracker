@@ -25,10 +25,20 @@ export const addTaskAC = task => {
     return { type: 'ADD_TASK', payload: task }
 }
 
+export const clearTasksAC = () => {
+    return { type: 'CLEAR_TASKS', payload: null }
+}
+
 export const fillTaskStatussesAC = value => {
     return { type: 'FILL_TASK_STATUSSES', payload: value }
 }
 
+
+export const clearTasksThunk = () => {
+    return async dispatch => {
+        dispatch(clearTasksAC());
+    }
+}
 
 export const fillTasksThunk = () => {
     return async dispatch => {

@@ -54,9 +54,9 @@ function Add(props) {
   }  
 
   function submit() {
-    console.log(task.title.trim(), task.text.trim());
+    console.log(task.title.trim(), task.text.trim(), task);
     if(task.title.trim() && task.text.trim()) {
-      props.addTaskThunk(task, () => setTask({ ...task, title: '', text: '', status: 0, executorId: 0 }));
+      props.addTaskThunk(task, () => setTask({ ...task, title: '', text: '', status: 0, executorId: 0, userId: props.userId }));
     }
   }
 
@@ -80,7 +80,7 @@ function Add(props) {
         <br/>
           executor: { props.usersLogins && renderUsersLoginsSelect() }
         <br/>
-        <button onClick={ submit }>login</button>
+        <button onClick={ submit }>add</button>
       </div>
     </>
   );
